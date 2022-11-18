@@ -1,14 +1,8 @@
 <div class="container">
   <h1><%= @list.name %></h1>
-    <% @list.movies.each do |movie| %>
-      <li>
-      <%= movie.title %>
-      </li>
-    <% end %>
-
     <% @list.bookmarks.each do |bookmark| %>
       <li>
-      <%= bookmark.movie.title %><%= link_to "x", bookmark_path(bookmark), :method => :delete, :class => "mt-4 btn btn-secondary" %>
+      <%= bookmark.movie.title %><%= link_to "x", bookmark_path(bookmark), data: { turbo_method: :delete }, class: 'btn btn_primary' %>
       </li>
     <% end %>
   <%= link_to "Add a film", new_list_bookmark_path(@list), :class => "mt-4 btn btn-secondary" %>

@@ -75,3 +75,4 @@ gem "sassc-rails" # Uncomment this line
 gem "jbuilder" # Comment this line
 
 gem "dotenv-rails", groups: [:development, :test]
+gem "cloudinary"

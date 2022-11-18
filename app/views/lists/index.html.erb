@@ -1,12 +1,26 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)) asset-url('cinema.jpg') ;">
+  <div class="container">
+    <h1>Save any kind of movies</h1>
+    <%= link_to "Add new list", new_list_path , :class => "btn btn-flat" %>
+  </div>
+</div>
 <div class="container">
-  <h1>All lists</h1>
-  <ul>
+<h1 style="margin-top: 20px" >All lists</h1>
+  <div class="row gap-4">
     <% @lists.each do |list| %>
-      <li>
-      <%= link_to list.name, list_path(list.id) %>
-      </li>
+      <div class="card-trip col-sm">
+        <% if list.photo.attached? %>
+          <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag "default-img-list", height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to list.name, list_path(list.id) %></h2>
+          </div>
+          <h2 class="card-trip-pricing"><%= list.movies.count %><%= list.movies.count <= 1 ? " film" : " films" %></h2>
+        </div>
+      </div>
     <% end %>
-  </ul>
-
-  <%= link_to "Add new list", new_list_path , :class => "btn btn-primary"%>
+  </div>
 </div>
